@@ -59,3 +59,20 @@ Prerequisites: Python 3.7+ installed.
 - **`dashboard_overview.png`**: Represents the initial landing screen showing system totals alongside a dynamic snapshot table of available current inventory.
 - **`mrp_shortage_alert.png`**: Demonstrates the frontend logic where an attempt to produce too many bicycles fails because the backend MRP check evaluates `Available Stock < Required BOM amount`.
 - **`production_execution.png`**: Shows an order successfully started. Visualizes the button states transitioning from "Start Production" to "Complete" alongside color-coded badges for status tracking.
+
+
+---
+
+## 📸 Project Screenshots
+
+### 🟢 Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### 🟢 Materials Management
+![Materials](screenshots/materials.png)
+
+### 🟢 Bill of Materials (BOM)
+![BOM](screenshots/bom.png)
+
+### 🟢 Final Production Output
+![Final](screenshots/final.png)
