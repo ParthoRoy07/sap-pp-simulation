@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Assisted Plan-to-Produce System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>SAP PP Sim</h2>
+            </div>
+            <nav>
+                <button class="nav-btn active" data-target="dashboard">Dashboard</button>
+                <button class="nav-btn" data-target="materials">Materials</button>
+                <button class="nav-btn" data-target="bom">Bill of Materials</button>
+                <button class="nav-btn" data-target="orders">Orders & MRP</button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Toast Notification -->
+            <div id="toast" class="toast hidden"></div>
+
+            <header>
+                <h1 id="page-title">Dashboard</h1>
+                <div class="user-profile">Demo User</div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="view-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h3>Total Materials</h3>
+                        <p id="stat-total-materials">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Active Orders</h3>
+                        <p id="stat-active-orders">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Finished Goods In Stock</h3>
+                        <p id="stat-finished-stock">0</p>
+                    </div>
+                </div>
+                
+                <h2 class="section-heading">Current Inventory Snapshot</h2>
+                <div class="table-container">
+                    <table id="dashboard-inventory-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Stock</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Populated by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Materials Section -->
+            <section id="materials" class="view-section hidden">
+                <div class="split-layout">
+                    <div class="layout-main">
+                        <div class="card">
+                            <h2>Materials Database</h2>
+                            <div class="table-container">
+                                <table id="materials-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Type</th>
+                                            <th>Cost</th>
+                                            <th>Stock</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layout-side">
+                        <div class="card">
+                            <h2>Add Material</h2>
+                            <form id="material-form">
+                                <div class="form-group">
+                                    <label>Name</label>
+                                    <input type="text" id="mat-name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <select id="mat-type">
+                                        <option value="RAW">Raw Material</option>
+                                        <option value="FINISHED">Finished Good</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Cost</label>
+                                    <input type="number" step="0.01" id="mat-cost" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Initial Stock</label>
+                                    <input type="number" id="mat-stock" required>
+                                </div>
+                                <button type="submit" class="btn-primary">Add Material</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- BOM Section -->
+            <section id="bom" class="view-section hidden">
+                <div class="split-layout">
+                    <div class="layout-main">
+                        <div class="card">
+                            <div class="bom-header">
+                                <h2>Bill of Materials</h2>
+                                <select id="bom-product-filter" class="inline-select">
+                                    <!-- Options injected via JS -->
+                                </select>
+                            </div>
+                            <div class="table-container">
+                                <table id="bom-table">
+                                    <thead>
+                                        <tr>
+                                            <th>Component Name</th>
+                                            <th>Quantity Required</th>
+                                            <th>Cost Per Unit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="bom-table-body">
+                                        <!-- JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Orders Section -->
+            <section id="orders" class="view-section hidden">
+                <div class="split-layout">
+                    <div class="layout-main">
+                        <div class="card">
+                            <h2>Production Orders</h2>
+                            <div class="table-container">
+                                <table id="orders-table">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Product</th>
+                                            <th>Quantity</th>
+                                            <th>Est. Cost</th>
+                                            <th>Status</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- JS -->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layout-side">
+                        <div class="card">
+                            <h2>Create Production Order (MRP Check)</h2>
+                            <form id="order-form">
+                                <div class="form-group">
+                                    <label>Product (Finished Goods)</label>
+                                    <select id="order-product" required>
+                                        <!-- JS -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Quantity</label>
+                                    <input type="number" id="order-qty" required min="1" value="1">
+                                </div>
+                                <button type="submit" class="btn-primary">Generate Order</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
