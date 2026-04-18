@@ -1,3 +1,7 @@
+## 🎥 Project Preview
+
+![Dashboard](screenshots/dashboard.png)
+
 # AI-Assisted Plan-to-Produce System (SAP PP Simulation)
 
 This project is a standalone, full-stack web application designed for college demonstration. It simulates the SAP Production Planning (PP) module's **Manufacturing Order Cycle (Plan-to-Produce)**.
